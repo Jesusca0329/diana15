@@ -1,0 +1,884 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+  <meta property="og:title" content="XV Años Diana Greykelly">
+  <meta property="og:description" content="¡Tengo el honor de invitarte a celebrar mis XV años! 24 de Octubre de 2026.">
+  <meta property="og:image" content="https://jesusca0329.github.io/diana15/">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://jesusca0329.github.io/diana15/">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="XV Años Diana Greykelly">
+  <meta name="twitter:description" content="¡Tengo el honor de invitarte a celebrar mis XV años! 24 de Octubre de 2026.">
+  <meta name="twitter:image" content="https://jesusca0329.github.io/diana15/">
+
+  <title>XV Años - Diana Greykelly</title>
+  <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Montserrat:wght@300;400;600&family=Cinzel:wght@400;600&display=swap" rel="stylesheet">
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body {
+      font-family: 'Montserrat', sans-serif;
+      background: #0f0c29;
+      color: #fff;
+      overflow: hidden;
+      height: 100vh;
+      width: 100vw;
+    }
+
+    /* ===== PANTALLA DE APERTURA VICTORIANA ===== */
+    #opening-screen {
+      position: fixed;
+      inset: 0;
+      z-index: 1000;
+      background: linear-gradient(135deg, #1a1a2e 0%, #16213e 50%, #0f3460 100%);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      transition: opacity 1.2s ease, transform 1.2s ease;
+    }
+    #opening-screen.hidden {
+      opacity: 0;
+      transform: scale(1.1);
+      pointer-events: none;
+    }
+
+    .victorian-frame {
+      width: 90%;
+      max-width: 340px;
+      border: 2px solid rgba(192, 192, 192, 0.3);
+      border-radius: 4px;
+      padding: 2.5rem 1.5rem;
+      position: relative;
+      background: rgba(255,255,255,0.03);
+      box-shadow: 
+        0 0 40px rgba(15, 52, 96, 0.5),
+        inset 0 0 60px rgba(0,0,0,0.3);
+    }
+    .victorian-frame::before, .victorian-frame::after {
+      content: '❦';
+      position: absolute;
+      font-size: 1.2rem;
+      color: rgba(201, 168, 76, 0.6);
+    }
+    .victorian-frame::before { top: 10px; left: 50%; transform: translateX(-50%); }
+    .victorian-frame::after { bottom: 10px; left: 50%; transform: translateX(-50%); }
+
+    .corner-ornament {
+      position: absolute;
+      width: 30px;
+      height: 30px;
+      border: 2px solid rgba(201, 168, 76, 0.4);
+    }
+    .corner-ornament.tl { top: -2px; left: -2px; border-right: none; border-bottom: none; }
+    .corner-ornament.tr { top: -2px; right: -2px; border-left: none; border-bottom: none; }
+    .corner-ornament.bl { bottom: -2px; left: -2px; border-right: none; border-top: none; }
+    .corner-ornament.br { bottom: -2px; right: -2px; border-left: none; border-top: none; }
+
+    .open-title {
+      font-family: 'Cinzel', serif;
+      font-size: 0.85rem;
+      letter-spacing: 6px;
+      text-transform: uppercase;
+      color: #a0aec0;
+      margin-bottom: 1.5rem;
+      text-align: center;
+    }
+    .open-name {
+      font-family: 'Great Vibes', cursive;
+      font-size: 2.8rem;
+      color: #e2e8f0;
+      text-align: center;
+      margin-bottom: 0.5rem;
+      text-shadow: 0 2px 10px rgba(0,0,0,0.5);
+    }
+    .open-sub {
+      font-family: 'Cinzel', serif;
+      font-size: 0.75rem;
+      letter-spacing: 4px;
+      color: #94a3b8;
+      text-align: center;
+      margin-bottom: 2rem;
+    }
+
+    .wax-seal-btn {
+      width: 100px;
+      height: 100px;
+      border-radius: 50%;
+      background: radial-gradient(circle at 35% 35%, #4a5568, #1a202c);
+      border: 3px solid rgba(201, 168, 76, 0.6);
+      box-shadow: 
+        0 4px 15px rgba(0,0,0,0.4),
+        inset 0 0 20px rgba(0,0,0,0.3);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      margin: 0 auto;
+      position: relative;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+      animation: sealPulse 2.5s ease-in-out infinite;
+    }
+    .wax-seal-btn:hover {
+      transform: scale(1.08);
+      box-shadow: 
+        0 6px 25px rgba(201, 168, 76, 0.3),
+        inset 0 0 20px rgba(0,0,0,0.3);
+    }
+    .wax-seal-btn span {
+      font-family: 'Cinzel', serif;
+      font-size: 0.65rem;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      color: #c9a84c;
+      text-align: center;
+      line-height: 1.4;
+    }
+    .wax-seal-btn::after {
+      content: '';
+      position: absolute;
+      inset: -8px;
+      border-radius: 50%;
+      border: 1px dashed rgba(201, 168, 76, 0.3);
+      animation: sealRotate 8s linear infinite;
+    }
+
+    @keyframes sealPulse {
+      0%, 100% { box-shadow: 0 4px 15px rgba(0,0,0,0.4), inset 0 0 20px rgba(0,0,0,0.3); }
+      50% { box-shadow: 0 4px 25px rgba(201, 168, 76, 0.2), inset 0 0 20px rgba(0,0,0,0.3); }
+    }
+    @keyframes sealRotate {
+      from { transform: rotate(0deg); }
+      to { transform: rotate(360deg); }
+    }
+
+    .floating-particles-open {
+      position: absolute;
+      inset: 0;
+      overflow: hidden;
+      pointer-events: none;
+    }
+    .particle {
+      position: absolute;
+      background: rgba(201, 168, 76, 0.3);
+      border-radius: 50%;
+      animation: floatUp linear infinite;
+    }
+    @keyframes floatUp {
+      0% { transform: translateY(100vh) scale(0); opacity: 0; }
+      20% { opacity: 1; }
+      80% { opacity: 1; }
+      100% { transform: translateY(-10vh) scale(1); opacity: 0; }
+    }
+
+    /* ===== APP ===== */
+    #app {
+      width: 100%;
+      height: 100vh;
+      overflow: hidden;
+      position: relative;
+    }
+    #pages {
+      display: flex;
+      width: 200%;
+      height: 100%;
+      transition: transform 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    }
+    .page {
+      width: 50%;
+      height: 100%;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      position: relative;
+      box-sizing: border-box;
+    }
+
+    /* ===== PÁGINA 1 CON MOVIMIENTO ===== */
+    .page-1 {
+      justify-content: center;
+      background-image: url(img/preview.jpg.jpeg);
+      background-size: cover;
+      background-position: center top;
+      background-repeat: no-repeat;
+      overflow: hidden;
+    }
+    /* Capa de imagen animada (Ken Burns) */
+    .page-1::after {
+      content: '';
+      position: absolute;
+      inset: -20px;
+      background-image: url(img/preview.jpg.jpeg);
+      background-size: relative;
+      background-position: center;
+      background-repeat: no-repeat;
+      animation: kenBurns 20s ease-in-out infinite alternate;
+      z-index: 0;
+    }
+    @keyframes kenBurns {
+      0% { transform: scale(1) translate(0, 0); }
+      100% { transform: scale(1.15) translate(-1%, -1%); }
+    }
+    .page-1::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(180deg, rgba(22,33,62,0.4) 0%, rgba(15,20,40,0.6) 50%, rgba(10,10,25,0.9) 100%);
+      z-index: 1;
+    }
+    .page-1 > * {
+      position: relative;
+      z-index: 2;
+    }
+
+    /* Partículas flotantes en la portada */
+    .particles-container {
+      position: absolute;
+      inset: 0;
+      overflow: hidden;
+      pointer-events: none;
+      z-index: 1;
+    }
+    .particle-gold {
+      position: absolute;
+      width: 4px;
+      height: 4px;
+      background: rgba(201, 168, 76, 0.6);
+      border-radius: 50%;
+      box-shadow: 0 0 6px rgba(201, 168, 76, 0.4);
+      animation: drift linear infinite;
+    }
+    .particle-blue {
+      position: absolute;
+      width: 3px;
+      height: 3px;
+      background: rgba(100, 149, 237, 0.5);
+      border-radius: 50%;
+      box-shadow: 0 0 4px rgba(100, 149, 237, 0.3);
+      animation: drift linear infinite;
+    }
+    @keyframes drift {
+      0% { transform: translateY(100vh) translateX(0); opacity: 0; }
+      10% { opacity: 1; }
+      90% { opacity: 1; }
+      100% { transform: translateY(-10vh) translateX(30px); opacity: 0; }
+    }
+
+    .xv-title {
+      font-family: 'Montserrat', sans-serif;
+      font-size: 0.9rem;
+      font-weight: 300;
+      letter-spacing: 8px;
+      text-transform: uppercase;
+      color: #fff;
+      margin-bottom: 0.8rem;
+      text-shadow: 0 2px 10px rgba(0,0,0,0.5);
+    }
+    .name-script {
+      font-family: 'Great Vibes', cursive;
+      font-size: 3.2rem;
+      color: #fff;
+      text-shadow: 0 2px 15px rgba(0,0,0,0.6);
+      margin-bottom: 1rem;
+      line-height: 1.1;
+    }
+    .date-line {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+      margin-bottom: 2rem;
+    }
+    .date-line::before,
+    .date-line::after {
+      content: '';
+      width: 50px;
+      height: 1px;
+      background: rgba(255,255,255,0.6);
+    }
+    .date-line span {
+      font-family: 'Montserrat', sans-serif;
+      font-size: 1rem;
+      letter-spacing: 3px;
+      color: #fff;
+      text-shadow: 0 1px 5px rgba(0,0,0,0.5);
+    }
+
+    .countdown {
+      display: flex;
+      gap: 0.6rem;
+      margin-bottom: 2rem;
+    }
+    .count-box {
+      background: rgba(255,255,255,0.15);
+      border: 1px solid rgba(255,255,255,0.3);
+      border-radius: 10px;
+      padding: 0.7rem 0.6rem;
+      text-align: center;
+      min-width: 60px;
+      backdrop-filter: blur(8px);
+    }
+    .count-number {
+      font-size: 1.6rem;
+      font-weight: 600;
+      color: #fff;
+      line-height: 1;
+    }
+    .count-label {
+      font-size: 0.6rem;
+      text-transform: lowercase;
+      letter-spacing: 1px;
+      opacity: 0.9;
+      margin-top: 0.3rem;
+      color: #fff;
+    }
+
+    .swipe-hint {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 0.3rem;
+      opacity: 0.7;
+      animation: pulse 2s infinite;
+      cursor: pointer;
+    }
+    .swipe-hint span:first-child {
+      font-size: 0.7rem;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      color: #fff;
+    }
+    .swipe-hint span:last-child {
+      font-size: 1.4rem;
+      color: #fff;
+    }
+
+    /* ===== BOTÓN DE AUDIO ===== */
+    #audio-toggle {
+      position: fixed;
+      bottom: 20px;
+      right: 20px;
+      z-index: 500;
+      width: 50px;
+      height: 50px;
+      border-radius: 50%;
+      background: rgba(22, 33, 62, 0.9);
+      border: 2px solid rgba(201, 168, 76, 0.5);
+      color: #c9a84c;
+      font-size: 1.3rem;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      backdrop-filter: blur(10px);
+      box-shadow: 0 4px 15px rgba(0,0,0,0.3);
+      transition: all 0.3s ease;
+      opacity: 0;
+      transform: scale(0.8);
+      pointer-events: none;
+    }
+    #audio-toggle.visible {
+      opacity: 1;
+      transform: scale(1);
+      pointer-events: all;
+    }
+    #audio-toggle:hover {
+      transform: scale(1.1);
+      border-color: #c9a84c;
+    }
+    #audio-toggle.playing {
+      animation: musicPulse 1.5s ease-in-out infinite;
+    }
+    @keyframes musicPulse {
+      0%, 100% { box-shadow: 0 0 0 0 rgba(201, 168, 76, 0.4); }
+      50% { box-shadow: 0 0 0 10px rgba(201, 168, 76, 0); }
+    }
+
+    /* ===== PÁGINA 2 ===== */
+    .page-2 {
+      overflow-y: auto;
+      overflow-x: hidden;
+      padding: 1.5rem;
+      background: #f0f4f8;
+      font-family: 'Georgia', 'Times New Roman', serif;
+      color: #333;
+    }
+    .back-btn {
+      position: sticky;
+      top: 0;
+      align-self: flex-start;
+      z-index: 10;
+      cursor: pointer;
+      padding: 0.5rem 1rem;
+      background: rgba(22, 33, 62, 0.1);
+      border: 1px solid rgba(22, 33, 62, 0.3);
+      border-radius: 20px;
+      font-size: 0.8rem;
+      letter-spacing: 1px;
+      color: #16213e;
+      font-family: 'Montserrat', sans-serif;
+      backdrop-filter: blur(10px);
+      margin-bottom: 1rem;
+      font-weight: 600;
+    }
+    .seq-section {
+      width: 100%;
+      max-width: 360px;
+      text-align: center;
+      margin-bottom: 2rem;
+      opacity: 0;
+      transform: translateY(20px);
+      transition: all 0.7s ease;
+    }
+    .seq-section.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+    .black-card {
+      background: #16213e;
+      border-radius: 16px;
+      padding: 1.8rem 1.2rem;
+      color: #fff;
+      box-shadow: 0 10px 40px rgba(0,0,0,0.15);
+    }
+    .black-card .parents-title {
+      font-size: 0.75rem;
+      letter-spacing: 4px;
+      text-transform: uppercase;
+      color: #c9a84c;
+      margin-bottom: 0.8rem;
+      font-family: 'Montserrat', sans-serif;
+    }
+    .black-card .parent-name {
+      font-size: 1.1rem;
+      color: #c9a84c;
+      font-style: italic;
+      margin: 0.3rem 0;
+      font-family: 'Great Vibes', cursive;
+    }
+    .black-card .intro-text {
+      font-size: 0.95rem;
+      line-height: 1.8;
+      color: #e2e8f0;
+      font-style: italic;
+      margin-bottom: 1.2rem;
+      font-family: 'Georgia', serif;
+    }
+    .black-card .invite-text {
+      font-size: 0.95rem;
+      margin-top: 1.2rem;
+      font-style: italic;
+      color: #e2e8f0;
+      font-family: 'Georgia', serif;
+    }
+    .black-card .dress-divider {
+      margin-top: 1.5rem;
+      padding-top: 1.5rem;
+      border-top: 1px solid rgba(201,168,76,0.2);
+    }
+    .black-card .dress-title {
+      font-size: 1.2rem;
+      letter-spacing: 3px;
+      color: #c9a84c;
+      font-style: italic;
+      margin-bottom: 1rem;
+      font-family: 'Great Vibes', cursive;
+    }
+    .dress-boxes {
+      display: flex;
+      justify-content: center;
+      gap: 1.5rem;
+    }
+    .dress-box {
+      width: 65px;
+      height: 65px;
+      background: rgba(201,168,76,0.15);
+      border: 1px solid rgba(201,168,76,0.4);
+      border-radius: 12px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.8rem;
+    }
+
+    .gold-line {
+      display: flex;
+      align-items: center;
+      gap: 0.8rem;
+      margin-bottom: 1rem;
+    }
+    .gold-line::before,
+    .gold-line::after {
+      content: '';
+      flex: 1;
+      height: 1px;
+      background: linear-gradient(90deg, transparent, #c9a84c, transparent);
+    }
+    .gold-line span {
+      font-size: 0.9rem;
+      letter-spacing: 3px;
+      text-transform: uppercase;
+      color: #c9a84c;
+      white-space: nowrap;
+      font-weight: 600;
+    }
+    .timeline {
+      position: relative;
+      padding: 0 0.5rem;
+    }
+    .timeline::before {
+      content: '';
+      position: absolute;
+      left: 50%;
+      top: 0;
+      bottom: 0;
+      width: 1px;
+      background: linear-gradient(180deg, transparent, #c9a84c, transparent);
+      transform: translateX(-50%);
+    }
+    .tl-item {
+      display: flex;
+      align-items: center;
+      margin-bottom: 1.2rem;
+      position: relative;
+      opacity: 0;
+      transition: all 0.5s ease;
+    }
+    .tl-item.visible {
+      opacity: 1;
+      transform: translateX(0) !important;
+    }
+    .tl-left { transform: translateX(-15px); }
+    .tl-left .tl-text { text-align: right; padding-right: 1rem; flex: 1; }
+    .tl-left .tl-icon { padding-left: 1rem; flex: 1; font-size: 1.4rem; }
+    .tl-right { transform: translateX(15px); }
+    .tl-right .tl-icon { text-align: right; padding-right: 1rem; flex: 1; font-size: 1.4rem; }
+    .tl-right .tl-text { text-align: left; padding-left: 1rem; flex: 1; }
+    .tl-dot {
+      width: 10px;
+      height: 10px;
+      border: 2px solid #c9a84c;
+      border-radius: 50%;
+      background: #f0f4f8;
+      z-index: 2;
+      flex-shrink: 0;
+    }
+    .tl-text p { margin: 0; font-size: 0.9rem; color: #444; }
+    .tl-text .time { margin: 0.2rem 0 0 0; font-size: 0.85rem; color: #c9a84c; font-weight: 600; }
+    .footer-end {
+      text-align: center;
+      opacity: 0.6;
+      margin-top: 1rem;
+      margin-bottom: 2rem;
+    }
+    .footer-end p {
+      font-size: 0.8rem;
+      letter-spacing: 3px;
+      text-transform: uppercase;
+      color: #c9a84c;
+      font-weight: 600;
+    }
+    .page-2::-webkit-scrollbar { width: 4px; }
+    .page-2::-webkit-scrollbar-thumb { background: rgba(201,168,76,0.3); border-radius: 4px; }
+
+    @keyframes pulse {
+      0%, 100% { opacity: 0.7; transform: translateX(0); }
+      50% { opacity: 1; transform: translateX(5px); }
+    }
+    #pages.dragging { transition: none !important; }
+  </style>
+<base target="_blank">
+</head>
+<body>
+
+  <!-- ===== AUDIO ===== -->
+  <!-- Reemplaza la URL src con tu archivo de música -->
+  <audio id="bg-music" loop preload="auto">
+    <source src="music/victoriana.mp3" type="audio/mpeg">
+  </audio>
+
+  <!-- ===== BOTÓN DE AUDIO ===== -->
+  <button id="audio-toggle" title="Reproducir/Pausar música">🎵</button>
+
+  <!-- ===== PANTALLA DE APERTURA ===== -->
+  <div id="opening-screen">
+    <div class="floating-particles-open" id="open-particles"></div>
+    
+    <div class="victorian-frame">
+      <div class="corner-ornament tl"></div>
+      <div class="corner-ornament tr"></div>
+      <div class="corner-ornament bl"></div>
+      <div class="corner-ornament br"></div>
+      
+      <div class="open-title">Invitación Especial</div>
+      <div class="open-name">Diana Greykelly</div>
+      <div class="open-sub">XV Años</div>
+      
+      <div class="wax-seal-btn" id="open-btn">
+        <span>Abrir<br>Invitación</span>
+      </div>
+    </div>
+    
+    <p style="margin-top: 2rem; font-size: 0.75rem; letter-spacing: 3px; color: #64748b; font-family: 'Cinzel', serif;">
+      24 de Octubre de 2026
+    </p>
+  </div>
+
+  <!-- ===== APP ===== -->
+  <div id="app">
+    <div id="pages">
+
+      <div class="page page-1">
+        <!-- Partículas flotantes -->
+        <div class="particles-container" id="particles"></div>
+        
+        <div class="xv-title">MIS XV AÑOS</div>
+        <div class="name-script">Diana Greykelly</div>
+        <div class="date-line"><span>24.10.2026</span></div>
+
+        <div class="countdown">
+          <div class="count-box">
+            <div class="count-number" id="days">--</div>
+            <div class="count-label">días</div>
+          </div>
+          <div class="count-box">
+            <div class="count-number" id="hours">--</div>
+            <div class="count-label">horas</div>
+          </div>
+          <div class="count-box">
+            <div class="count-number" id="minutes">--</div>
+            <div class="count-label">minutos</div>
+          </div>
+          <div class="count-box">
+            <div class="count-number" id="seconds">--</div>
+            <div class="count-label">segundos</div>
+          </div>
+        </div>
+
+        <div class="swipe-hint" id="swipe-hint">
+          <span>Desliza a la derecha</span>
+          <span>→</span>
+        </div>
+      </div>
+
+      <div class="page page-2" id="page2">
+        <button class="back-btn" id="back-btn">← Volver</button>
+
+        <div class="seq-section" id="sec-padres">
+          <div class="black-card">
+            <p class="intro-text">Gran suceso en la familia Antunez - Monagas el florecer de una nueva dama con la bendición del universo y el amor de mis Padres</p>
+            <p class="parents-title">Mis Devotos Padres:</p>
+            <p class="parent-name">Lady Gipsy Monagas.</p>
+            <p class="parent-name">Lord Hugo Antunez</p>
+            <p class="invite-text">Tengo el honor de invitarte a celebrar mis XV años.</p>
+
+            <div class="dress-divider">
+              <p class="dress-title">SemiFormal</p>
+              <div class="dress-boxes">
+                <div class="dress-box">👗</div>
+                <div class="dress-box">🤵</div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="seq-section" id="sec-regalos">
+          <div class="gold-line"><span>Mesa de regalos</span></div>
+          <p style="font-size:0.95rem;line-height:1.7;color:#555;font-style:italic;margin-bottom:1rem;">"El regalo es opcional, tu presencia es obligatoria. Pero si gustas hacerme un presente, se agradecerá que sea en efectivo a través de lluvia de sobres."</p>
+          <div style="font-size:2.5rem;filter:drop-shadow(0 0 8px rgba(201,168,76,0.4));">✉️</div>
+        </div>
+
+        <div class="seq-section" id="sec-itinerario">
+          <div class="gold-line"><span>Itinerario</span></div>
+          <div class="timeline">
+            <div class="tl-item tl-left">
+              <div class="tl-text"><p>Recepción de invitados.</p><p class="time">7:00 PM</p></div>
+              <div class="tl-dot"></div><div class="tl-icon"></div>
+            </div>
+            <div class="tl-item tl-right">
+              <div class="tl-icon"></div><div class="tl-dot"></div>
+              <div class="tl-text"><p>Entrada de la quinceañera</p></div>
+            </div>
+            <div class="tl-item tl-left">
+              <div class="tl-text"><p>Vals con sus Padres</p><p class="time">8:05 PM</p></div>
+              <div class="tl-dot"></div><div class="tl-icon">💃</div>
+            </div>
+            <div class="tl-item tl-right">
+              <div class="tl-icon">🌹</div><div class="tl-dot"></div>
+              <div class="tl-text"><p>Vals de las rosas con sus invitados</p><p class="time">8:11 PM</p></div>
+            </div>
+            <div class="tl-item tl-left">
+              <div class="tl-text"><p>Brindis</p><p class="time">8:18 PM</p></div>
+              <div class="tl-dot"></div><div class="tl-icon">🥂</div>
+            </div>
+            <div class="tl-item tl-right">
+              <div class="tl-icon">📷</div><div class="tl-dot"></div>
+              <div class="tl-text"><p>Sesión de fotos.</p><p class="time">8:25 PM</p></div>
+            </div>
+            <div class="tl-item tl-left">
+              <div class="tl-text"><p>Cumpleaños</p><p class="time">8:55 PM</p></div>
+              <div class="tl-dot"></div><div class="tl-icon">🎂</div>
+            </div>
+            <div class="tl-item tl-right">
+              <div class="tl-icon">🍽️</div><div class="tl-dot"></div>
+              <div class="tl-text"><p>Cena con los invitados.</p><p class="time">9:00 PM</p></div>
+            </div>
+            <div class="tl-item tl-left">
+              <div class="tl-text"><p>A disfrutar de la fiesta</p><p class="time">9:30 PM</p></div>
+              <div class="tl-dot"></div><div class="tl-icon">🎵</div>
+            </div>
+            <div class="tl-item tl-right">
+              <div class="tl-icon">🙏</div><div class="tl-dot"></div>
+              <div class="tl-text"><p>Entrega de torta y agradecimiento.</p></div>
+            </div>
+          </div>
+        </div>
+
+        <div class="seq-section" id="sec-direccion">
+          <div class="gold-line"><span>Dirección</span></div>
+          <div style="font-size:2rem;margin-bottom:0.5rem;">📍</div>
+          <p style="font-size:1.1rem;color:#c9a84c;font-style:italic;margin:0.3rem 0;font-weight:600;">Parroquia Antimano</p>
+          <p style="font-size:0.95rem;color:#555;margin:0.3rem 0;">Salon de Eventos.</p>
+          <p style="font-size:0.9rem;color:#777;opacity:0.9;line-height:1.5;margin:0.3rem 0;">Calle el algodonal sector Patria Eterna antes de llegar al hospital.</p>
+        </div>
+
+        <div class="footer-end"><p>¡Te esperamos!</p></div>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    (function(){
+      /* ===== PARTÍCULAS ===== */
+      function createParticles(container, count, type) {
+        for(let i=0; i<count; i++){
+          const p = document.createElement('div');
+          p.className = type === 'gold' ? 'particle-gold' : 'particle-blue';
+          p.style.left = Math.random() * 100 + '%';
+          p.style.animationDuration = (8 + Math.random() * 12) + 's';
+          p.style.animationDelay = Math.random() * 10 + 's';
+          p.style.width = (2 + Math.random() * 3) + 'px';
+          p.style.height = p.style.width;
+          container.appendChild(p);
+        }
+      }
+      createParticles(document.getElementById('particles'), 20, 'gold');
+      createParticles(document.getElementById('particles'), 15, 'blue');
+      
+      /* Partículas de apertura */
+      const openContainer = document.getElementById('open-particles');
+      for(let i=0; i<15; i++){
+        const p = document.createElement('div');
+        p.className = 'particle';
+        p.style.left = Math.random() * 100 + '%';
+        p.style.width = (3 + Math.random() * 5) + 'px';
+        p.style.height = p.style.width;
+        p.style.animationDuration = (6 + Math.random() * 8) + 's';
+        p.style.animationDelay = Math.random() * 5 + 's';
+        openContainer.appendChild(p);
+      }
+
+      /* ===== AUDIO ===== */
+      const audio = document.getElementById('bg-music');
+      const audioBtn = document.getElementById('audio-toggle');
+      let isPlaying = false;
+      
+      function toggleAudio(){
+        if(isPlaying){
+          audio.pause();
+          audioBtn.innerHTML = '🔇';
+          audioBtn.classList.remove('playing');
+          isPlaying = false;
+        } else {
+          audio.play().catch(e => console.log('Audio requires interaction'));
+          audioBtn.innerHTML = '🎵';
+          audioBtn.classList.add('playing');
+          isPlaying = true;
+        }
+      }
+      audioBtn.addEventListener('click', toggleAudio);
+
+      /* ===== APERTURA ===== */
+      const openingScreen = document.getElementById('opening-screen');
+      const openBtn = document.getElementById('open-btn');
+      
+      openBtn.addEventListener('click', function(){
+        // Reproducir audio al abrir
+        audio.play().then(() => {
+          isPlaying = true;
+          audioBtn.innerHTML = '🎵';
+          audioBtn.classList.add('playing');
+        }).catch(e => console.log('Audio autoplay blocked'));
+        
+        // Mostrar botón de audio
+        audioBtn.classList.add('visible');
+        
+        // Animar cierre de pantalla
+        openingScreen.classList.add('hidden');
+        setTimeout(() => {
+          openingScreen.style.display = 'none';
+        }, 1200);
+      });
+
+      /* ===== CUENTA REGRESIVA ===== */
+      const targetDate = new Date('2026-10-24T00:00:00');
+      function updateCountdown(){
+        const now = new Date();
+        const diff = targetDate - now;
+        if(diff <= 0){
+          document.getElementById('days').textContent = '00';
+          document.getElementById('hours').textContent = '00';
+          document.getElementById('minutes').textContent = '00';
+          document.getElementById('seconds').textContent = '00';
+          return;
+        }
+        const d = Math.floor(diff / (1000*60*60*24));
+        const h = Math.floor((diff % (1000*60*60*24)) / (1000*60*60));
+        const m = Math.floor((diff % (1000*60*60)) / (1000*60));
+        const s = Math.floor((diff % (1000*60)) / 1000);
+        document.getElementById('days').textContent = String(d).padStart(2,'0');
+        document.getElementById('hours').textContent = String(h).padStart(2,'0');
+        document.getElementById('minutes').textContent = String(m).padStart(2,'0');
+        document.getElementById('seconds').textContent = String(s).padStart(2,'0');
+      }
+      updateCountdown();
+      setInterval(updateCountdown, 1000);
+
+      /* ===== NAVEGACIÓN ===== */
+      const pages = document.getElementById('pages');
+      let currentPage = 0, startX = 0, currentX = 0, isDragging = false;
+
+      function goToPage(page){
+        currentPage = page;
+        pages.style.transform = 'translateX(-'+(page*50)+'%)';
+        if(page === 1){
+          setTimeout(() => {
+            document.querySelectorAll('.seq-section').forEach((el,i) => setTimeout(() => el.classList.add('visible'), i*150));
+            setTimeout(() => {
+              document.querySelectorAll('.tl-item').forEach((el,i) => setTimeout(() => el.classList.add('visible'), i*100));
+            }, 600);
+          }, 300);
+        } else {
+          document.querySelectorAll('.seq-section').forEach(el => el.classList.remove('visible'));
+          document.querySelectorAll('.tl-item').forEach(el => el.classList.remove('visible'));
+        }
+      }
+
+      pages.addEventListener('touchstart', e => { startX = e.touches[0].clientX; isDragging = true; pages.classList.add('dragging'); }, {passive:true});
+      pages.addEventListener('touchmove', e => { if(!isDragging) return; currentX = e.touches[0].clientX; const diff = currentX - startX; const base = -currentPage*50; const pct = (diff/window.innerWidth)*50; pages.style.transform = 'translateX(calc('+base+'% + '+pct+'%))'; }, {passive:true});
+      pages.addEventListener('touchend', () => { isDragging = false; pages.classList.remove('dragging'); const diff = currentX - startX; if(diff < -60 && currentPage===0) goToPage(1); else if(diff > 60 && currentPage===1) goToPage(0); else goToPage(currentPage); });
+
+      pages.addEventListener('mousedown', e => { startX = e.clientX; isDragging = true; pages.classList.add('dragging'); });
+      pages.addEventListener('mousemove', e => { if(!isDragging) return; currentX = e.clientX; const diff = currentX - startX; const base = -currentPage*50; const pct = (diff/window.innerWidth)*50; pages.style.transform = 'translateX(calc('+base+'% + '+pct+'%))'; });
+      pages.addEventListener('mouseup', () => { if(!isDragging) return; isDragging = false; pages.classList.remove('dragging'); const diff = currentX - startX; if(diff < -60 && currentPage===0) goToPage(1); else if(diff > 60 && currentPage===1) goToPage(0); else goToPage(currentPage); });
+      pages.addEventListener('mouseleave', () => { if(isDragging){ isDragging = false; pages.classList.remove('dragging'); goToPage(currentPage); } });
+
+      document.getElementById('back-btn').addEventListener('click', () => goToPage(0));
+      document.getElementById('swipe-hint').addEventListener('click', () => goToPage(1));
+    })();
+  </script>
+</body>
+</html>
