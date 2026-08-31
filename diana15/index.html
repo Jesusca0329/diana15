@@ -4,7 +4,6 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
 
-  <!-- Open Graph / Meta Tags para preview al compartir -->
   <meta property="og:title" content="XV Años Diana Greykelly">
   <meta property="og:description" content="¡Tengo el honor de invitarte a celebrar mis XV años! 24 de Octubre de 2026.">
   <meta property="og:image" content="https://jesusca0329.github.io/diana15/">
@@ -18,7 +17,7 @@
   <meta name="twitter:image" content="https://jesusca0329.github.io/diana15/">
 
   <title>XV Años - Diana Greykelly</title>
-  <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Montserrat:wght@300;400;600&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Montserrat:wght@300;400;600&family=Cinzel:wght@400;600&display=swap" rel="stylesheet">
   <style>
     * { margin: 0; padding: 0; box-sizing: border-box; }
     body {
@@ -29,6 +28,154 @@
       height: 100vh;
       width: 100vw;
     }
+
+    /* ===== PANTALLA DE APERTURA VICTORIANA ===== */
+    #opening-screen {
+      position: fixed;
+      inset: 0;
+      z-index: 1000;
+      background: linear-gradient(135deg, #1a1a2e 0%, #16213e 50%, #0f3460 100%);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      transition: opacity 1.2s ease, transform 1.2s ease;
+    }
+    #opening-screen.hidden {
+      opacity: 0;
+      transform: scale(1.1);
+      pointer-events: none;
+    }
+
+    .victorian-frame {
+      width: 90%;
+      max-width: 340px;
+      border: 2px solid rgba(192, 192, 192, 0.3);
+      border-radius: 4px;
+      padding: 2.5rem 1.5rem;
+      position: relative;
+      background: rgba(255,255,255,0.03);
+      box-shadow: 
+        0 0 40px rgba(15, 52, 96, 0.5),
+        inset 0 0 60px rgba(0,0,0,0.3);
+    }
+    .victorian-frame::before, .victorian-frame::after {
+      content: '❦';
+      position: absolute;
+      font-size: 1.2rem;
+      color: rgba(201, 168, 76, 0.6);
+    }
+    .victorian-frame::before { top: 10px; left: 50%; transform: translateX(-50%); }
+    .victorian-frame::after { bottom: 10px; left: 50%; transform: translateX(-50%); }
+
+    .corner-ornament {
+      position: absolute;
+      width: 30px;
+      height: 30px;
+      border: 2px solid rgba(201, 168, 76, 0.4);
+    }
+    .corner-ornament.tl { top: -2px; left: -2px; border-right: none; border-bottom: none; }
+    .corner-ornament.tr { top: -2px; right: -2px; border-left: none; border-bottom: none; }
+    .corner-ornament.bl { bottom: -2px; left: -2px; border-right: none; border-top: none; }
+    .corner-ornament.br { bottom: -2px; right: -2px; border-left: none; border-top: none; }
+
+    .open-title {
+      font-family: 'Cinzel', serif;
+      font-size: 0.85rem;
+      letter-spacing: 6px;
+      text-transform: uppercase;
+      color: #a0aec0;
+      margin-bottom: 1.5rem;
+      text-align: center;
+    }
+    .open-name {
+      font-family: 'Great Vibes', cursive;
+      font-size: 2.8rem;
+      color: #e2e8f0;
+      text-align: center;
+      margin-bottom: 0.5rem;
+      text-shadow: 0 2px 10px rgba(0,0,0,0.5);
+    }
+    .open-sub {
+      font-family: 'Cinzel', serif;
+      font-size: 0.75rem;
+      letter-spacing: 4px;
+      color: #94a3b8;
+      text-align: center;
+      margin-bottom: 2rem;
+    }
+
+    .wax-seal-btn {
+      width: 100px;
+      height: 100px;
+      border-radius: 50%;
+      background: radial-gradient(circle at 35% 35%, #4a5568, #1a202c);
+      border: 3px solid rgba(201, 168, 76, 0.6);
+      box-shadow: 
+        0 4px 15px rgba(0,0,0,0.4),
+        inset 0 0 20px rgba(0,0,0,0.3);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      margin: 0 auto;
+      position: relative;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+      animation: sealPulse 2.5s ease-in-out infinite;
+    }
+    .wax-seal-btn:hover {
+      transform: scale(1.08);
+      box-shadow: 
+        0 6px 25px rgba(201, 168, 76, 0.3),
+        inset 0 0 20px rgba(0,0,0,0.3);
+    }
+    .wax-seal-btn span {
+      font-family: 'Cinzel', serif;
+      font-size: 0.65rem;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      color: #c9a84c;
+      text-align: center;
+      line-height: 1.4;
+    }
+    .wax-seal-btn::after {
+      content: '';
+      position: absolute;
+      inset: -8px;
+      border-radius: 50%;
+      border: 1px dashed rgba(201, 168, 76, 0.3);
+      animation: sealRotate 8s linear infinite;
+    }
+
+    @keyframes sealPulse {
+      0%, 100% { box-shadow: 0 4px 15px rgba(0,0,0,0.4), inset 0 0 20px rgba(0,0,0,0.3); }
+      50% { box-shadow: 0 4px 25px rgba(201, 168, 76, 0.2), inset 0 0 20px rgba(0,0,0,0.3); }
+    }
+    @keyframes sealRotate {
+      from { transform: rotate(0deg); }
+      to { transform: rotate(360deg); }
+    }
+
+    .floating-particles-open {
+      position: absolute;
+      inset: 0;
+      overflow: hidden;
+      pointer-events: none;
+    }
+    .particle {
+      position: absolute;
+      background: rgba(201, 168, 76, 0.3);
+      border-radius: 50%;
+      animation: floatUp linear infinite;
+    }
+    @keyframes floatUp {
+      0% { transform: translateY(100vh) scale(0); opacity: 0; }
+      20% { opacity: 1; }
+      80% { opacity: 1; }
+      100% { transform: translateY(-10vh) scale(1); opacity: 0; }
+    }
+
+    /* ===== APP ===== */
     #app {
       width: 100%;
       height: 100vh;
@@ -51,23 +198,74 @@
       box-sizing: border-box;
     }
 
+    /* ===== PÁGINA 1 CON MOVIMIENTO ===== */
     .page-1 {
-       justify-content: center;
-      background-image: url(img/preview.jpg.jpeg) ;
-      background-size: relative;
+      justify-content: center;
+      background-image: url(img/preview.jpg.jpeg);
+      background-size: cover;
       background-position: center top;
       background-repeat: no-repeat;
+      overflow: hidden;
+    }
+    /* Capa de imagen animada (Ken Burns) */
+    .page-1::after {
+      content: '';
+      position: absolute;
+      inset: -20px;
+      background-image: url(img/preview.jpg.jpeg);
+      background-size: relative;
+      background-position: center;
+      background-repeat: no-repeat;
+      animation: kenBurns 20s ease-in-out infinite alternate;
+      z-index: 0;
+    }
+    @keyframes kenBurns {
+      0% { transform: scale(1) translate(0, 0); }
+      100% { transform: scale(1.15) translate(-1%, -1%); }
     }
     .page-1::before {
       content: '';
       position: absolute;
       inset: 0;
-      background: linear-gradient(180deg, rgba(0,0,0,0.3) 0%, rgba(0,0,0,0.5) 50%, rgba(0,0,0,0.85) 100%);
+      background: linear-gradient(180deg, rgba(22,33,62,0.4) 0%, rgba(15,20,40,0.6) 50%, rgba(10,10,25,0.9) 100%);
       z-index: 1;
     }
     .page-1 > * {
       position: relative;
       z-index: 2;
+    }
+
+    /* Partículas flotantes en la portada */
+    .particles-container {
+      position: absolute;
+      inset: 0;
+      overflow: hidden;
+      pointer-events: none;
+      z-index: 1;
+    }
+    .particle-gold {
+      position: absolute;
+      width: 4px;
+      height: 4px;
+      background: rgba(201, 168, 76, 0.6);
+      border-radius: 50%;
+      box-shadow: 0 0 6px rgba(201, 168, 76, 0.4);
+      animation: drift linear infinite;
+    }
+    .particle-blue {
+      position: absolute;
+      width: 3px;
+      height: 3px;
+      background: rgba(100, 149, 237, 0.5);
+      border-radius: 50%;
+      box-shadow: 0 0 4px rgba(100, 149, 237, 0.3);
+      animation: drift linear infinite;
+    }
+    @keyframes drift {
+      0% { transform: translateY(100vh) translateX(0); opacity: 0; }
+      10% { opacity: 1; }
+      90% { opacity: 1; }
+      100% { transform: translateY(-10vh) translateX(30px); opacity: 0; }
     }
 
     .xv-title {
@@ -158,11 +356,53 @@
       color: #fff;
     }
 
+    /* ===== BOTÓN DE AUDIO ===== */
+    #audio-toggle {
+      position: fixed;
+      bottom: 20px;
+      right: 20px;
+      z-index: 500;
+      width: 50px;
+      height: 50px;
+      border-radius: 50%;
+      background: rgba(22, 33, 62, 0.9);
+      border: 2px solid rgba(201, 168, 76, 0.5);
+      color: #c9a84c;
+      font-size: 1.3rem;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      backdrop-filter: blur(10px);
+      box-shadow: 0 4px 15px rgba(0,0,0,0.3);
+      transition: all 0.3s ease;
+      opacity: 0;
+      transform: scale(0.8);
+      pointer-events: none;
+    }
+    #audio-toggle.visible {
+      opacity: 1;
+      transform: scale(1);
+      pointer-events: all;
+    }
+    #audio-toggle:hover {
+      transform: scale(1.1);
+      border-color: #c9a84c;
+    }
+    #audio-toggle.playing {
+      animation: musicPulse 1.5s ease-in-out infinite;
+    }
+    @keyframes musicPulse {
+      0%, 100% { box-shadow: 0 0 0 0 rgba(201, 168, 76, 0.4); }
+      50% { box-shadow: 0 0 0 10px rgba(201, 168, 76, 0); }
+    }
+
+    /* ===== PÁGINA 2 ===== */
     .page-2 {
       overflow-y: auto;
       overflow-x: hidden;
       padding: 1.5rem;
-      background: #fafafa;
+      background: #f0f4f8;
       font-family: 'Georgia', 'Times New Roman', serif;
       color: #333;
     }
@@ -173,12 +413,12 @@
       z-index: 10;
       cursor: pointer;
       padding: 0.5rem 1rem;
-      background: rgba(201,168,76,0.1);
-      border: 1px solid rgba(201,168,76,0.4);
+      background: rgba(22, 33, 62, 0.1);
+      border: 1px solid rgba(22, 33, 62, 0.3);
       border-radius: 20px;
       font-size: 0.8rem;
       letter-spacing: 1px;
-      color: #c9a84c;
+      color: #16213e;
       font-family: 'Montserrat', sans-serif;
       backdrop-filter: blur(10px);
       margin-bottom: 1rem;
@@ -198,10 +438,11 @@
       transform: translateY(0);
     }
     .black-card {
-      background: #1a0a0a;
+      background: #16213e;
       border-radius: 16px;
       padding: 1.8rem 1.2rem;
       color: #fff;
+      box-shadow: 0 10px 40px rgba(0,0,0,0.15);
     }
     .black-card .parents-title {
       font-size: 0.75rem;
@@ -221,7 +462,7 @@
     .black-card .intro-text {
       font-size: 0.95rem;
       line-height: 1.8;
-      color: #f5f0e8;
+      color: #e2e8f0;
       font-style: italic;
       margin-bottom: 1.2rem;
       font-family: 'Georgia', serif;
@@ -230,7 +471,7 @@
       font-size: 0.95rem;
       margin-top: 1.2rem;
       font-style: italic;
-      color: #f5f0e8;
+      color: #e2e8f0;
       font-family: 'Georgia', serif;
     }
     .black-card .dress-divider {
@@ -321,7 +562,7 @@
       height: 10px;
       border: 2px solid #c9a84c;
       border-radius: 50%;
-      background: #fafafa;
+      background: #f0f4f8;
       z-index: 2;
       flex-shrink: 0;
     }
@@ -352,10 +593,48 @@
 <base target="_blank">
 </head>
 <body>
+
+  <!-- ===== AUDIO ===== -->
+  <!-- Reemplaza la URL src con tu archivo de música -->
+  <audio id="bg-music" loop preload="auto">
+    <source src="music/victoriana.mp3" type="audio/mpeg">
+  </audio>
+
+  <!-- ===== BOTÓN DE AUDIO ===== -->
+  <button id="audio-toggle" title="Reproducir/Pausar música">🎵</button>
+
+  <!-- ===== PANTALLA DE APERTURA ===== -->
+  <div id="opening-screen">
+    <div class="floating-particles-open" id="open-particles"></div>
+    
+    <div class="victorian-frame">
+      <div class="corner-ornament tl"></div>
+      <div class="corner-ornament tr"></div>
+      <div class="corner-ornament bl"></div>
+      <div class="corner-ornament br"></div>
+      
+      <div class="open-title">Invitación Especial</div>
+      <div class="open-name">Diana Greykelly</div>
+      <div class="open-sub">XV Años</div>
+      
+      <div class="wax-seal-btn" id="open-btn">
+        <span>Abrir<br>Invitación</span>
+      </div>
+    </div>
+    
+    <p style="margin-top: 2rem; font-size: 0.75rem; letter-spacing: 3px; color: #64748b; font-family: 'Cinzel', serif;">
+      24 de Octubre de 2026
+    </p>
+  </div>
+
+  <!-- ===== APP ===== -->
   <div id="app">
     <div id="pages">
 
       <div class="page page-1">
+        <!-- Partículas flotantes -->
+        <div class="particles-container" id="particles"></div>
+        
         <div class="xv-title">MIS XV AÑOS</div>
         <div class="name-script">Diana Greykelly</div>
         <div class="date-line"><span>24.10.2026</span></div>
@@ -473,6 +752,78 @@
 
   <script>
     (function(){
+      /* ===== PARTÍCULAS ===== */
+      function createParticles(container, count, type) {
+        for(let i=0; i<count; i++){
+          const p = document.createElement('div');
+          p.className = type === 'gold' ? 'particle-gold' : 'particle-blue';
+          p.style.left = Math.random() * 100 + '%';
+          p.style.animationDuration = (8 + Math.random() * 12) + 's';
+          p.style.animationDelay = Math.random() * 10 + 's';
+          p.style.width = (2 + Math.random() * 3) + 'px';
+          p.style.height = p.style.width;
+          container.appendChild(p);
+        }
+      }
+      createParticles(document.getElementById('particles'), 20, 'gold');
+      createParticles(document.getElementById('particles'), 15, 'blue');
+      
+      /* Partículas de apertura */
+      const openContainer = document.getElementById('open-particles');
+      for(let i=0; i<15; i++){
+        const p = document.createElement('div');
+        p.className = 'particle';
+        p.style.left = Math.random() * 100 + '%';
+        p.style.width = (3 + Math.random() * 5) + 'px';
+        p.style.height = p.style.width;
+        p.style.animationDuration = (6 + Math.random() * 8) + 's';
+        p.style.animationDelay = Math.random() * 5 + 's';
+        openContainer.appendChild(p);
+      }
+
+      /* ===== AUDIO ===== */
+      const audio = document.getElementById('bg-music');
+      const audioBtn = document.getElementById('audio-toggle');
+      let isPlaying = false;
+      
+      function toggleAudio(){
+        if(isPlaying){
+          audio.pause();
+          audioBtn.innerHTML = '🔇';
+          audioBtn.classList.remove('playing');
+          isPlaying = false;
+        } else {
+          audio.play().catch(e => console.log('Audio requires interaction'));
+          audioBtn.innerHTML = '🎵';
+          audioBtn.classList.add('playing');
+          isPlaying = true;
+        }
+      }
+      audioBtn.addEventListener('click', toggleAudio);
+
+      /* ===== APERTURA ===== */
+      const openingScreen = document.getElementById('opening-screen');
+      const openBtn = document.getElementById('open-btn');
+      
+      openBtn.addEventListener('click', function(){
+        // Reproducir audio al abrir
+        audio.play().then(() => {
+          isPlaying = true;
+          audioBtn.innerHTML = '🎵';
+          audioBtn.classList.add('playing');
+        }).catch(e => console.log('Audio autoplay blocked'));
+        
+        // Mostrar botón de audio
+        audioBtn.classList.add('visible');
+        
+        // Animar cierre de pantalla
+        openingScreen.classList.add('hidden');
+        setTimeout(() => {
+          openingScreen.style.display = 'none';
+        }, 1200);
+      });
+
+      /* ===== CUENTA REGRESIVA ===== */
       const targetDate = new Date('2026-10-24T00:00:00');
       function updateCountdown(){
         const now = new Date();
@@ -496,6 +847,7 @@
       updateCountdown();
       setInterval(updateCountdown, 1000);
 
+      /* ===== NAVEGACIÓN ===== */
       const pages = document.getElementById('pages');
       let currentPage = 0, startX = 0, currentX = 0, isDragging = false;
 
