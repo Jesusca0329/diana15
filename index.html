@@ -207,7 +207,6 @@
       background-repeat: no-repeat;
       overflow: hidden;
     }
-    /* Capa de imagen animada (Ken Burns) */
     .page-1::after {
       content: '';
       position: absolute;
@@ -235,7 +234,6 @@
       z-index: 2;
     }
 
-    /* Partículas flotantes en la portada */
     .particles-container {
       position: absolute;
       inset: 0;
@@ -445,12 +443,13 @@
       box-shadow: 0 10px 40px rgba(0,0,0,0.15);
     }
     .black-card .parents-title {
-      font-size: 0.75rem;
-      letter-spacing: 4px;
-      text-transform: uppercase;
+      font-size: 1.5rem;
+      letter-spacing: 2px;
+      
       color: #c9a84c;
       margin-bottom: 0.8rem;
-      font-family: 'Montserrat', sans-serif;
+     /* font-family: 'Montserrat', sans-serif; */
+      font-family: 'Great Vibes';
     }
     .black-card .parent-name {
       font-size: 1.1rem;
@@ -465,14 +464,17 @@
       color: #e2e8f0;
       font-style: italic;
       margin-bottom: 1.2rem;
-      font-family: 'Georgia', serif;
+      font-family: 'Great Vibes'; 
+      /* font-family: 'Georgia', serif; */
     }
     .black-card .invite-text {
       font-size: 0.95rem;
       margin-top: 1.2rem;
       font-style: italic;
       color: #e2e8f0;
-      font-family: 'Georgia', serif;
+      font-family: 'Great Vibes', cursive;
+     /* font-family: 'Georgia', serif; */
+
     }
     .black-card .dress-divider {
       margin-top: 1.5rem;
@@ -503,6 +505,90 @@
       justify-content: center;
       font-size: 1.8rem;
     }
+
+    /* ===== BOTÓN COLORES RESERVADOS ===== */
+    .colors-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.4rem;
+      margin-top: 1.2rem;
+      padding: 0.5rem 1.2rem;
+      background: rgba(22, 33, 62, 0.6);
+      border: 1px solid rgba(201, 168, 76, 0.4);
+      border-radius: 20px;
+      color: #c9a84c;
+      font-family: 'Montserrat', sans-serif;
+      font-size: 0.75rem;
+      font-weight: 600;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+      cursor: pointer;
+      backdrop-filter: blur(8px);
+      transition: all 0.3s ease;
+    }
+    .colors-btn:hover {
+      background: rgba(22, 33, 62, 0.85);
+      border-color: #c9a84c;
+    }
+    .colors-btn .arrow {
+      transition: transform 0.3s ease;
+      font-size: 0.7rem;
+    }
+    .colors-btn.open .arrow {
+      transform: rotate(180deg);
+    }
+
+    .colors-message {
+      max-height: 0;
+      overflow: hidden;
+      opacity: 0;
+      transition: max-height 0.5s ease, opacity 0.4s ease, margin 0.4s ease;
+    }
+    .colors-message.show {
+      max-height: 200px;
+      opacity: 1;
+      margin-top: 1rem;
+    }
+    .colors-message-inner {
+      background: linear-gradient(135deg, #1e3a5f, #2d4a6f);
+      border: 1px solid rgba(201, 168, 76, 0.3);
+      border-radius: 12px;
+      padding: 1.2rem 1rem;
+      position: relative;
+    }
+    .colors-message-inner::before {
+      content: '✦';
+      position: absolute;
+      top: -10px;
+      left: 50%;
+      transform: translateX(-50%);
+      background: #16213e;
+      color: #c9a84c;
+      font-size: 0.9rem;
+      padding: 0 0.5rem;
+    }
+    .colors-message-inner p {
+      font-family: 'Georgia', serif;
+      font-size: 0.9rem;
+      font-style: italic;
+      color: #e2e8f0;
+      line-height: 1.6;
+    }
+    .colors-message-inner .color-dots {
+      display: flex;
+      justify-content: center;
+      gap: 0.8rem;
+      margin-top: 0.8rem;
+    }
+    .color-dots span {
+      width: 18px;
+      height: 18px;
+      border-radius: 50%;
+      border: 2px solid rgba(255,255,255,0.3);
+      box-shadow: 0 0 8px rgba(0,0,0,0.3);
+    }
+    .dot-blue { background: #4a6fa5; }
+    .dot-grey { background: #6b7280; }
 
     .gold-line {
       display: flex;
@@ -584,6 +670,75 @@
     .page-2::-webkit-scrollbar { width: 4px; }
     .page-2::-webkit-scrollbar-thumb { background: rgba(201,168,76,0.3); border-radius: 4px; }
 
+    /* ===== BOTÓN CONFIRMAR ASISTENCIA ===== */
+    .rsvp-card {
+      background: linear-gradient(145deg, #16213e, #1a2a4a);
+      border: 1px solid rgba(201, 168, 76, 0.3);
+      border-radius: 16px;
+      padding: 2rem 1.5rem;
+      text-align: center;
+      box-shadow: 0 10px 40px rgba(0,0,0,0.15);
+    }
+    .rsvp-card .rsvp-icon {
+      font-size: 2.5rem;
+      margin-bottom: 0.8rem;
+      filter: drop-shadow(0 0 8px rgba(201, 168, 76, 0.3));
+    }
+    .rsvp-card .rsvp-title {
+      font-family: 'Cinzel', serif;
+      font-size: 1.1rem;
+      letter-spacing: 4px;
+      text-transform: uppercase;
+      color: #c9a84c;
+      margin-bottom: 0.5rem;
+    }
+    .rsvp-card .rsvp-text {
+      font-size: 0.9rem;
+      color: #cbd5e1;
+      line-height: 1.6;
+      margin-bottom: 1.5rem;
+      font-style: italic;
+    }
+    .rsvp-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.6rem;
+      padding: 0.9rem 2rem;
+      background: linear-gradient(135deg, #c9a84c, #a08030);
+      border: none;
+      border-radius: 30px;
+      color: #16213e;
+      font-family: 'Montserrat', sans-serif;
+      font-size: 0.85rem;
+      font-weight: 600;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      text-decoration: none;
+      cursor: pointer;
+      box-shadow: 0 4px 15px rgba(201, 168, 76, 0.3);
+      transition: all 0.3s ease;
+      position: relative;
+      overflow: hidden;
+    }
+    .rsvp-btn::before {
+      content: '';
+      position: absolute;
+      top: 0; left: -100%;
+      width: 100%; height: 100%;
+      background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
+      transition: left 0.5s ease;
+    }
+    .rsvp-btn:hover::before {
+      left: 100%;
+    }
+    .rsvp-btn:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 6px 20px rgba(201, 168, 76, 0.4);
+    }
+    .rsvp-btn:active {
+      transform: translateY(0);
+    }
+
     @keyframes pulse {
       0%, 100% { opacity: 0.7; transform: translateX(0); }
       50% { opacity: 1; transform: translateX(5px); }
@@ -595,10 +750,10 @@
 <body>
 
   <!-- ===== AUDIO ===== -->
-  <!-- Reemplaza la URL src con tu archivo de música -->
   <audio id="bg-music" loop preload="auto">
     <source src="music/victoriana.mp3" type="audio/mpeg">
   </audio>
+  
 
   <!-- ===== BOTÓN DE AUDIO ===== -->
   <button id="audio-toggle" title="Reproducir/Pausar música">🎵</button>
@@ -632,7 +787,6 @@
     <div id="pages">
 
       <div class="page page-1">
-        <!-- Partículas flotantes -->
         <div class="particles-container" id="particles"></div>
         
         <div class="xv-title">MIS XV AÑOS</div>
@@ -673,13 +827,28 @@
             <p class="parents-title">Mis Devotos Padres:</p>
             <p class="parent-name">Lady Gipsy Monagas.</p>
             <p class="parent-name">Lord Hugo Antunez</p>
-            <p class="invite-text">Tengo el honor de invitarte a celebrar mis XV años.</p>
+            <p class="invite-text">Tenemos el honor de invitarte a celebrar mis XV años.</p>
 
             <div class="dress-divider">
               <p class="dress-title">SemiFormal</p>
               <div class="dress-boxes">
                 <div class="dress-box">👗</div>
                 <div class="dress-box">🤵</div>
+              </div>
+
+              <!-- ===== BOTÓN COLORES RESERVADOS ===== -->
+              <button class="colors-btn" id="colors-btn">
+                <span>Colores Reservados</span>
+                <span class="arrow">▼</span>
+              </button>
+              <div class="colors-message" id="colors-message">
+                <div class="colors-message-inner">
+                  <p>Se reservan los colores azules y grises<br>— son exclusivos de la quinceañera.</p>
+                  <div class="color-dots">
+                    <span class="dot-blue" title="Azul"></span>
+                    <span class="dot-grey" title="Gris"></span>
+                  </div>
+                </div>
               </div>
             </div>
           </div>
@@ -737,6 +906,19 @@
           </div>
         </div>
 
+        <!-- ===== CONFIRMAR ASISTENCIA ===== -->
+        <div class="seq-section" id="sec-rsvp">
+          <div class="gold-line"><span>Confirmar Asistencia</span></div>
+          <div class="rsvp-card">
+            <div class="rsvp-icon">🖋️</div>
+            <p class="rsvp-title">Reservar</p>
+            <p class="rsvp-text">Por favor confirma tu asistencia antes del 10 de octubre para ayudarnos con la organización.</p>
+            <a class="rsvp-btn" href="https://wa.me/+584142545124?text=..." target="_blank">
+              <span>✓</span> Confirmar por WhatsApp
+            </a>
+          </div>
+        </div>
+
         <div class="seq-section" id="sec-direccion">
           <div class="gold-line"><span>Dirección</span></div>
           <div style="font-size:2rem;margin-bottom:0.5rem;">📍</div>
@@ -768,7 +950,6 @@
       createParticles(document.getElementById('particles'), 20, 'gold');
       createParticles(document.getElementById('particles'), 15, 'blue');
       
-      /* Partículas de apertura */
       const openContainer = document.getElementById('open-particles');
       for(let i=0; i<15; i++){
         const p = document.createElement('div');
@@ -806,24 +987,32 @@
       const openBtn = document.getElementById('open-btn');
       
       openBtn.addEventListener('click', function(){
-        // Reproducir audio al abrir
         audio.play().then(() => {
           isPlaying = true;
           audioBtn.innerHTML = '🎵';
           audioBtn.classList.add('playing');
         }).catch(e => console.log('Audio autoplay blocked'));
         
-        // Mostrar botón de audio
         audioBtn.classList.add('visible');
         
-        // Animar cierre de pantalla
         openingScreen.classList.add('hidden');
         setTimeout(() => {
           openingScreen.style.display = 'none';
         }, 1200);
       });
 
+      /* ===== BOTÓN COLORES RESERVADOS ===== */
+      const colorsBtn = document.getElementById('colors-btn');
+      const colorsMsg = document.getElementById('colors-message');
+      colorsBtn.addEventListener('click', function(){
+        colorsBtn.classList.toggle('open');
+        colorsMsg.classList.toggle('show');
+      });
+      
+
       /* ===== CUENTA REGRESIVA ===== */
+      
+  
       const targetDate = new Date('2026-10-24T00:00:00');
       function updateCountdown(){
         const now = new Date();
@@ -879,6 +1068,8 @@
       document.getElementById('back-btn').addEventListener('click', () => goToPage(0));
       document.getElementById('swipe-hint').addEventListener('click', () => goToPage(1));
     })();
+    
+    // texto
   </script>
 </body>
 </html>
